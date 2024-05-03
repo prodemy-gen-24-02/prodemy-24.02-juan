@@ -1,0 +1,148 @@
+*, html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: #51291E;
+    color: #EDF4ED;
+    position: fixed;
+    z-index: 200; /*ensure it's on top of other content */
+}
+
+.brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 1.2em;
+    margin-right: 20px;
+}
+
+.brand-name {
+    color: #EDF4ED;
+    font-weight: 700;
+}
+
+.brand-name-h {
+    color: #79B791;
+    font-weight: 1000;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.navigator {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navigator li {
+    margin-right: 20px;
+}
+
+.navigator li:last-child {
+    margin-right: 0;
+}
+
+.navigator a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.navigator a:hover {
+    background-color: #79B791;
+    border-radius: 5px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box input[type="text"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-box button {
+    padding: 8px 12px;
+    background-color: #ABD1B5;
+    color: #301014;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.user-info a {
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.navigator .active {
+    color: #79B791;
+    font-weight: bold;
+}
+
+main {
+    padding: 100px;
+}
+
+.product-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-item {
+    width: 200px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #51291E;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.product-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.product-item button {
+    padding: 10px 20px;
+    background-color: #51291E;
+    color: #EDF4ED;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-item button:hover {
+    background-color: #301014;
+}
