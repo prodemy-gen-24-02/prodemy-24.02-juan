@@ -57,12 +57,13 @@ header {
 .navigator a {
     color: white;
     text-decoration: none;
-    padding: 5px;
+    padding: 16px;
 }
 
 .navigator a:hover {
-    background-color: #79B791;
+    background-color: #301014;
     border-radius: 5px;
+    transition: ease ease-in-out;
 }
 
 .search-box {
@@ -110,10 +111,12 @@ main {
 .product-catalog {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    margin-left: 100px;
+    /* justify-content: space-between; */
 }
 
 .product-item {
+    flex: 0 0 20%; /* Three values: flex-grow | flex-shrink | flex-basis */
     width: 200px;
     margin-bottom: 20px;
     padding: 20px;
@@ -146,3 +149,84 @@ main {
 .product-item button:hover {
     background-color: #301014;
 }
+
+footer {
+    background-color: #51291E;
+    color: whitesmoke;
+    padding: 20px 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.contact {
+    display: block;
+}
+
+.footer-section {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.footer-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section.about .contact {
+    margin-top: 10px;
+}
+
+.social a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: whitesmoke;
+    color: #301014;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.links {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.links a {
+    color: whitesmoke;
+    text-decoration: none;
+
+}
+
+.links a:hover {
+    color: #79B791;
+    transition: ease-in-out;
+}
+
+.links li {
+    margin-bottom: 3px;
+}
+
+.form-contact {
+    height: 100%;
+    width: 100%;
+    display: grid;
+
+}
+
+/* .form-contact>* {
+    flex:0 0 10% ;
+} */

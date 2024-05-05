@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Droney</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 <header class="header-container">
@@ -23,8 +23,8 @@
                 <input type="text" placeholder="Search products...">
                 <button type="submit">Search</button>
             </li>
-            <li><a href="#E"><i class="fas fa-bell"></i></a></li>
-            <li><a href="#F"><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a href="#E"><i class="fa-solid fa-bell"></i></a></li>
+            <li><a href="#F"><i class="fa-solid fa-cart-shopping"></i></a></li>
         </ul>
         <div class="user-info">
             <a href="#G">
@@ -83,10 +83,58 @@
             <p>Rp 160.000</p>
             <button>Add to Cart</button>
         </div>
+        <div class="product-item">
+            <img src="image/ltr-0-the-one-ring.jpg" alt="Gadget Trio">
+            <h3>The One Ring</h3>
+            <p>Rp 42.157.368.000</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="image/LEA_Black_Lotus.jpg" alt="Magicians of Bonds and Unity">
+            <h3>Black Lotus</h3>
+            <p>Rp 127.749.600</p>
+            <button>Add to Cart</button>
+        </div>
     </section>
 </main>
 <footer>
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h2>About Us</h2>
+            <p>House of Cards</p>
+            <div class="contact">
+                <span><i class="fa-solid fa-location-dot"></i> Jl. Timur ke Barat</span>
+                <span><i class="fa-solid fa-envelope"></i> cardhouse@example.com</span>
+            </div>
+            <div class="social">
+                <a href="#a"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#a"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#a"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
 
+        <div class="footer-section links">
+            <h2>Quick Links</h2>
+            <ul class="links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Catalog</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section contact-form">
+            <h2>Contact Us</h2>
+            <form class="form-contact">
+                <input type="email" name="email" class="text-input" placeholder="Your email address">
+                <textarea name="message" class="text-input" placeholder="Your message"></textarea>
+                <button type="submit" class="btn">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2024 CardHouse. All rights reserved
+    </div>
 </footer>
 </body>
 </html>
