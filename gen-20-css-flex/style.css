@@ -1,7 +1,7 @@
 *, html, body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto", sans-serif; /* prevent horizontal scrolling*/
 }
 
 header {
@@ -9,6 +9,9 @@ header {
     background-color: #51291E;
     color: #EDF4ED;
     position: fixed;
+    /* display: flex;
+    justify-content: space-evenly;
+    justify-items: center; */
     z-index: 200; /*ensure it's on top of other content */
 }
 
@@ -64,6 +67,7 @@ header {
 .navigator a:hover {
     background-color: #301014;
     border-radius: 5px;
+    cursor: pointer;
     /* transform: scale(1.05); */
 }
 
@@ -85,6 +89,11 @@ header {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-box button:hover{
+    transform: scale(1.05);
 }
 
 .user-info img {
@@ -119,6 +128,7 @@ main {
 .product-item {
     flex: 0 0 20%; /* Three values: flex-grow | flex-shrink | flex-basis */
     width: 200px;
+    margin-right: 20px;
     margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #51291E;
@@ -135,6 +145,7 @@ main {
 
 .product-item img:hover {
         transform: scale(1.05);
+        cursor: pointer;
 }
 
 .product-item h3 {
@@ -150,12 +161,19 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.4s ease-in-out;
+    /* transition: all 0.3s ease-in-out; */
+    box-shadow: 0 7px #999;
 }
 
 .product-item button:hover {
     background-color: #301014;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
+}
+
+.product-item button:active{
+    background-color: #301014;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 footer {
