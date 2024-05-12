@@ -3,9 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>CardHouse-Market</title>
 </head>
-<body>
-    
+<body class="h-screen font-[Roboto]">
+    <header class="bg-[#51291E] text-white">
+        <nav class="flex justify-between items-center py-3 px-6 w-[92%] mx-auto">
+            <div class="flex items-center gap-[0.25vw]">
+                <div class="text-lg">Card</div>
+                <div class="text-lg text-red-500">House</div>
+            </div>
+            <div class="">
+                <ul  class=" flex items-center gap-[3vw]">
+                    <li><a href="#home" class="hover:text-gray-500">Home</a></li>
+                    <li><a href="#TCG" class="hover:text-gray-500">TCG</a></li>
+                    <li><a href="#Board-Game" class="hover:text-gray-500">Board Game</a></li>
+                    <li>
+                        <form action="" class="w-full max-w-md">
+                            <div class="relative flex items-center text-gray-400 focus-within:text-gray-600">
+                                <input type="text" name="search" placeholder="What card do you need?" autocomplete="off"
+                                    aria-label="What card do you need"
+                                    class="w-full pr-3 pl-10 px-3 py-2 font-semibold placeholder-gray-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2"
+                                    >
+                                    <i class="fa-solid fa-magnifying-glass absolute ml-3 pointer-events-none"></i>
+                            </div>
+                        </form>
+                    </li>
+                    <li><a><i class="fa-solid fa-bell"></i></a></li>
+                    <li><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-[1vw]">
+                <a href="#avatar">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <span><a href="#avatar">John Doe</a></span>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto p-4">
+        <section class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center md:items-start">
+            <div class="text-center mb-4">
+                <img src="https://ms.yugipedia.com//2/2c/TenpaiDragonPaidra-LEDE-EN-SR-1E.png" alt="TenpaiDragonPaidra-LEDE-EN-SR-1E.png" class="w-full md:w-1/2 rounded-lg mb-4 md:mb-0 md:mr-4">
+            </div>
+            <div class="md:w-1/2">
+                <h1 class="text-2xl font-bold mb-2">Tenpai Dragon Paidra - Legacy of Destruction</h1>
+                <h2 class="text-xl font-bold mb-2">Products Detail</h2>
+                <p class="text-gray-600 mb-4">
+                    If this card is Normal or Special Summoned: You can add to your hand or Set 1 "Sangen" Spell/Trap from your Deck. You
+                    can
+                    only use this effect of "Tenpai Dragon Paidra" once per turn. You take no battle damage from battles involving your
+                    FIRE
+                    Dragon monsters. Once per turn, during the Battle Phase, you can (Quick Effect): Immediately after this effect
+                    resolves,
+                    Synchro Summon using this card you control.
+                </p>
+                <div class="flex flex-col items-center justify-between">
+                    <span class="text-xl font-bold">$18.49</span>
+                    <button class="bg-[#51291E] hover:bg-[#301014] text-white font-bold py-2 px-4 rounded">
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-[#51291E] text-white">
+        <div class="flex justify-around items-center py-3 px-6">
+            <div class="flex flex-col">
+                <h2>About us</h2>
+                <p>House of Cards</p>
+                <div class="flex gap-[0.5vw]">
+                    <span><a href="#map" class="hover:text-gray-500"><i class="fa-solid fa-location-dot"></i> Jl. Simpang Lima</a></span>
+                    <span><a href="#mail" class="hover:text-gray-500"><i class="fa-solid fa-envelope"></i> cardhouse@example.com</a></span>
+                </div>
+                <div class="">
+                    <a href="#a" class="hover:text-gray-500"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#a" class="hover:text-gray-500"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#a" class="hover:text-gray-500"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <h2>Quick Links</h2>
+                <ul class="flex flex-col">
+                    <li><a href="#Home" class="hover:text-gray-500">Home</a></li>
+                    <li><a href="#TCG" class="hover:text-gray-500">TCG</a></li>
+                    <li><a href="#Board-game" class="hover:text-gray-500">Board Game</a></li>
+                    <li><a href="#Contact" class="hover:text-gray-500">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex justify-center items-center py-3 px-6">
+            &copy; 2024 CardHouse. All rights reserved
+        </div>
+    </footer>
 </body>
 </html>l
