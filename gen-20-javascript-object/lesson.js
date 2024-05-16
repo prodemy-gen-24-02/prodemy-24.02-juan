@@ -59,6 +59,7 @@ function updateBiografi(propertyName, newValue) {
         console.log(`Property '${propertyName}' does not exist in biografi object.`);
     }
 }
+console.log('Biografi awal', biografi);
 
 // Prompt user for input and update biografi object
 rl.question('Masukan nama property yang ingin diubah: ', (propertyName) => {
