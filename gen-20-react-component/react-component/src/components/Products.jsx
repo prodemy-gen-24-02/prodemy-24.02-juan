@@ -3,7 +3,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 
 const Products = (props) => {
     return (
-        <div key={props.id} className='flex flex-col grow-0 shrink-0 basis-[20%] mr-[20px] mb-[20px] p-[20px] text-center rounded-xl border-2 border-black shadow-lg '>
+        <div key={props.id} className='flex flex-col grow-0 shrink-0 basis-[20%] ml-[20px] mr-[20px] mb-[20px] p-[20px] text-center rounded-xl border-2 border-black shadow-lg '>
             <img src={props.img} alt={props.name} className='w-full rounded-lg mb-[10px] hover:scale-105 transition-all duration-300 ease-in-out' />
             <div>
                 <h3 className='font-bold text-[1.1em] mb-[0.5em]'>{props.name}</h3>
