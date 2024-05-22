@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -9,10 +10,10 @@ const Footer = () => {
                         <div class="flex flex-col">
                             <h2 class="tracking-wide font-semibold">About us</h2>
                             <p>House of Cards</p>
-                            <div class="my-1 flex flex-wrap gap-[1vw]">
-                                <span><a href="#map" class="hover:text-gray-500 transition-all duration-500"><i class="fa-solid fa-location-dot"></i> Jl. Simpang
+                            <div class="my-1 flex flex-wrap gap-[1vw] items-center">
+                              <FaMapMarkedAlt /><span><a href="#map" class="hover:text-gray-500 transition-all duration-500"> Jl. Simpang
                                     Lima</a></span>
-                                <span><a href="#mail" class="hover:text-gray-500 transition-all duration-500"><i class="fa-solid fa-envelope"></i>
+                              <FaEnvelope /><span><a href="#mail" class="hover:text-gray-500 transition-all duration-500">
                                     cardhouse@example.com</a></span>
                             </div>
                             <div class="flex lg:gap-[1vw] md:gap-[3vw] gap-[6vw]">

@@ -14,7 +14,7 @@ function Header() {
           <span className='font-bold text-2xl'>Card</span>
           <span className='font-semibold text-2xl text-red-700'>House</span>
         </div>
-        <nav className={`duration-500 md:static absolute md:bg-[#51291E] bg-[#301014] md:min-h-fit min-h-[30vh] left-0 ${menuOpen ? 'top-[8%]' : 'top-[-100%]'} md:w-auto w-full flex items-center px-2`}>
+        <nav className={`duration-500 md:static absolute md:bg-[#51291E] bg-[#301014] md:min-h-fit min-h-[30vh] left-0 ${menuOpen ? 'top-[8%]' : 'top-[-100%]'} md:w-auto w-full flex items-center px-2 z-50`}>
           <ul className='flex md:flex-row flex-col md:items-center gap-[3vw] text-nowrap'>
             <li><a href='#' className='transition ease-in-out hover:text-gray-500 duration-300'>Home</a></li>
             <li><a href='#' className='transition ease-in-out hover:text-gray-500 duration-300'>Product TCG</a></li>
