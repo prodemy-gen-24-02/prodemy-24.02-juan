@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="axios.js"></script>
+</head>
+<body>
+    <button onclick="getPost()">get Data</button>
+    <button>data to json</button>
+    <button onclick="postData(addData)">post data</button>
+    <button onclick="updateData(1, update)">put data id 1</button>
+    <button onclick="deleteData(2)">delete data id 2</button>
+    <script>
+        const getPost = async () => {
+                try {
+                    const resp = await axios.get('https://dummyjson.com/posts');
+                    console.log(resp.data.posts)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        const addData = {
+                title: "Dave",
+                userId: 10,
+                body: "Dive Dave Div"
+            };
+            const postData = async () => {
+                try {
+                    const respun = await axios.post('https://dummyjson.com/posts/add', addData, {
+                        headers: {
+                            'Content-type': 'application/json'
+                        }
+                    });
+                    console.log(respun)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+             const update = {
+                    title: "update",
+                    body: "also update"
+                };
+
+                const updateData = async (id, data) => {
+                    try {
+                        const response = await axios.put(`https://dummyjson.com/posts/${id}`, data, {
+                            headers: {
+                                'Content-type': 'application/json'
+                            }
+                        });
+                        console.log(response);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+
+                const deleteData = async (id) => {
+                    try {
+                        const response = await axios.delete(`https://dummyjson.com/posts/${id}`);
+                        console.log(response);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+    </script>
+</body>
+</html>
