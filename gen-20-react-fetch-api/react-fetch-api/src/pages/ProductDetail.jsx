@@ -3,6 +3,7 @@ import Layout from '../components/layout/Layout'
 import { useParams } from 'react-router-dom'
 import Breadcrumb from '../components/Breadcrumb'
 import axios from 'axios'
+import useSWR from 'swr'
 
 const ProductDetail = () => {
   const [data, setData] = useState([])
@@ -10,30 +11,49 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [mainImage, setMainImage] = useState('')
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/data')
-        console.log('Api response', + response)
-        console.log('API response', + response.data)
-        setData(response.data)
-      } catch (error) {
-        console.error('Error fetching data: ', error)
-      }
-    }
-    fetchData()
-  },[])
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('http://localhost:3000/data')
+  //       console.log('Api response',  response)
+  //       console.log('API response',  response.data)
+  //       setData(response.data)
+  //     } catch (error) {
+  //       console.error('Error fetching data: ', error)
+  //     }
+  //   }
+  //   fetchData()
+  // },[])
 
-  useEffect(() =>{
-    if(data.length > 0){
-      console.log('Data loaded: ', data)
-      const foundProduct = data.find((item) => item.id === parseInt(id))
-      if(foundProduct) {
-        setProduct(foundProduct)
-        setMainImage(foundProduct.card_images[0].image_url)
+  // useEffect(() =>{
+  //   if(data.length > 0){
+  //     console.log('Data loaded: ', data)
+  //     const foundProduct = data.find(product => String(product.id) === id)
+  //     // const foundProduct = data.find((item) => item.id === parseInt(id))
+  //     console.log('bagian product', foundProduct)
+  //     if(foundProduct) {
+  //       console.log('bagian product',foundProduct)
+  //       setProduct(foundProduct)
+  //       setMainImage(foundProduct.card_images[0].image_url)
+  //     }
+  //   }
+  // },[data, id])
+
+  useEffect(() => {
+    const fetchData = async () =>{
+      try {
+        const response = await axios.get(`http://localhost:3000/data/${id}`)
+        console.log('Isi API', response.data)
+        setProduct(response.data)
+        if(response.data.card_images && response.data.card_images.length > 0){
+          setMainImage(response.data.card_images[0].image_url)
+        }
+      } catch (error) {
+        console.error('Error catchin api: ', error)
       }
     }
-  },[data, id])
+    fetchData();
+  }, [id])
 
   const handleThumbnailClick = (src) => {
     setMainImage(src)
