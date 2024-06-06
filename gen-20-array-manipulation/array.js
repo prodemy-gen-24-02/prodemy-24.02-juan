@@ -97,12 +97,24 @@ const payload = {
     "price": "0.15"
 }
 
+const payLoadToo = {
+    "id": 87,
+    "name": "Ancient Gear Advance First",
+    "type": "Spell",
+    "set_code": "LEDE-EN055",
+    "image_url": "https://images.ygoprodeck.com/images/cards/4064925.jpg",
+    "price": "0.15"
+}
+
 const payloadUpdate = {
-    name: "Ancient Gear Duel LINKZ"
+    name: "Ancient Gear Duel LINKZ",
+    "set_code": "LSN-EN009"
 }
 
 addCards(payload); //works
 
-editCardById(4, payloadUpdate); //works
+editCardById(4, {name: "Ancient Gear DDD"}); //works
 
 removeCardById(2); //works
+
+addStartCard(payLoadToo);
