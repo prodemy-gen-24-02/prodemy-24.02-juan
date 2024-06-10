@@ -47,12 +47,12 @@ const ProductPage = () => {
           data?.map ((data) =>(
             <Products
               key={data.id}
+              id={data.id}
               img={data.card_images[0].image_url}
               price={data.card_prices[0].tcgplayer_price}
               name={data.name}
               series={data.series}
               onClick={() => onClickCard(data.id)}
-              addToCart={data}
             />
           ))
         }
