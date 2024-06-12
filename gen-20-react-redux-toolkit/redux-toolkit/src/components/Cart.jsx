@@ -1,5 +1,4 @@
 import React from 'react'
-//import { CartContext } from '../context/CartContext'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart,removeFromCart,clearCart } from '../store/cartSlice'
 import PropTypes from 'prop-types'
@@ -68,13 +67,19 @@ function Cart({ showModal, toggle}) {
                 </div>
                 {
                     cartItems.length > 0 ? (
-                        <div className="flex flex-col justify-between items-center">
+                        <div className="flex flex-col gap-2 justify-between items-center">
                             <h1 className="text-lg font-bold">Total: ${getCartTotal()}</h1>
                             <button
                                 className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
                                 onClick={handleClearCart}
                             >
                                 Clear cart
+                            </button>
+                            <button
+                                className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+
+                            >
+                                Continue Payment
                             </button>
                         </div>
                     ) : (
