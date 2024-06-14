@@ -4,6 +4,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 //import Cart from './Cart'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../store/cartSlice'
+import { saveCartToServer } from '../store/cartThunk'
 
 const Products = (props) => {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ const Products = (props) => {
 
     const handleAddToCart = (product) => {
         dispatch(addToCart({...product}))
+        dispatch(saveCartToServer({...product}))
     }
 
     const toggle = () => {

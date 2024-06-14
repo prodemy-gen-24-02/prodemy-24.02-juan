@@ -3,12 +3,25 @@ import {FaBars, FaTimes, FaShoppingCart, FaSearch, FaUser, FaBell} from 'react-i
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Cart from '../Cart'
+import { resetAuthData } from '../../store/authSlice'
+
+const getTotalItem = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  console.log('cartItems:', cartItems);
+
+  if (!Array.isArray(cartItems)) {
+    return 0;
+  }
+
+  return cartItems.reduce((total, item) => total + item.quantity, 0);
+};
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
-  const cartItems = useSelector(state => state.cart.cartItems)
+  const user = useSelector((state) => state.auth.user)
+  const isLoggedIn = useSelector((state) => state.auth.token !== "")
 
   const toggleMenu = () =>{
     setMenuOpen(!menuOpen)
@@ -18,9 +31,7 @@ function Header() {
     setShowModal(!showModal)
   }
 
-  const getTotalItem = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0)
-  }
+  const totalItems = getTotalItem()
 
   return (
     <header className='bg-[#51291E] text-white w-full z-50'>
@@ -46,7 +57,7 @@ function Header() {
             <div>
               {!showModal && <button className='px-4 py-2 bg-[#301014] text-white text-xs font-bold uppercase rounded hover:bg-[#51291E] focus:outline-none focus:bg-[#51291E]'
                 onClick={toggle}
-              >Cart ({getTotalItem()}) </button>}
+              >Cart ({totalItems}) </button>}
             </div>
           </ul>
         </nav>

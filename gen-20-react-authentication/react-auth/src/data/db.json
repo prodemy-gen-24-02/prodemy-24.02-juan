@@ -3640,5 +3640,42 @@
       ]
     }
   ],
-  "cart":[]
+  "cart": [
+    {
+      "cartItems": {
+        "id": "27483935",
+        "img": "https://images.ygoprodeck.com/images/cards/27483935.jpg",
+        "price": "0.14",
+        "name": "Ancient Gear Commander"
+      },
+      "id": 1
+    },
+    {
+      "cartItems": {
+        "id": "53541822",
+        "img": "https://images.ygoprodeck.com/images/cards/53541822.jpg",
+        "price": "0.13",
+        "name": "Ancient Gear Duel"
+      },
+      "id": 2
+    },
+    {
+      "cartItems": {
+        "id": "64603182",
+        "img": "https://images.ygoprodeck.com/images/cards/64603182.jpg",
+        "price": "0.29",
+        "name": "Ancient Gear Dark Golem"
+      },
+      "id": 3
+    },
+    {
+      "cartItems": {
+        "id": "64603182",
+        "img": "https://images.ygoprodeck.com/images/cards/64603182.jpg",
+        "price": "0.29",
+        "name": "Ancient Gear Dark Golem"
+      },
+      "id": 4
+    }
+  ]
 }
