@@ -38,16 +38,14 @@ const authSlice = createSlice({
         setUser(state, action) {
             const {id, email, name, role } = action.payload;
 
-            state.user.id = id;
-            state.user.email = email;
-            state.user.name = name;
-            state.user.role = role;
-
-            localStorate.setItem('user', JSON.stringify({ id, email, name, role }));
+            state.user = {id, email, name, role}
+            console.log('Saving user to localStorage', {id, email, name, role})
+            localStorage.setItem('user', JSON.stringify({ id, email, name, role }));
         },
         resetAuthData() {
             localStorage.removeItem("token");
             localStorage.removeItem("user");
+            axios.defaults.headers.common["Authorization"] =""
             return {...initialState}
         }
     }

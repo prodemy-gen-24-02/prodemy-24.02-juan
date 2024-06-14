@@ -4,8 +4,8 @@ import authSlice from './authSlice';
 
 const store = configureStore({
     reducer: {
-        cart: cartReducer,
         auth: authSlice,
+        cart: cartReducer,
     },
 })
 

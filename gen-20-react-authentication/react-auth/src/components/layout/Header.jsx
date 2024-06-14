@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import {FaBars, FaTimes, FaShoppingCart, FaSearch, FaUser, FaBell} from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import Cart from '../Cart'
 import { resetAuthData } from '../../store/authSlice'
 
@@ -19,9 +19,17 @@ const getTotalItem = () => {
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showModal, setShowModal] = useState(false)
-
+  const [showDropdown, setShowDropdown] = useState(false)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const user = useSelector((state) => state.auth.user)
   const isLoggedIn = useSelector((state) => state.auth.token !== "")
+
+
+  const onClickLogout = () => {
+    dispatch(resetAuthData())
+    navigate('/login')
+  }
 
   const toggleMenu = () =>{
     setMenuOpen(!menuOpen)
@@ -65,7 +73,19 @@ function Header() {
           <a href='#User'>
             <FaUser />
           </a>
-          <span><a href='#User' className='hidden md:contents'>Juan Adhiasta</a></span>
+          {isLoggedIn && (
+            <div className='self-center cursor-pointer'
+            onClick={() => setShowDropdown(!showDropdown)}>
+              {user.name}
+              {showDropdown && (
+                <div
+                className='rounded-lg drop-shadow-md absolute bg-white p-3 text-black'
+                onClick={onClickLogout}>
+                  Logout
+                </div>
+              )}
+            </div>
+          )}
           <button onClick={toggleMenu} className='text-2xl focus:outline-none md:hidden'>
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>

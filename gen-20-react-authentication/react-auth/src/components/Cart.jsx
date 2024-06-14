@@ -8,29 +8,33 @@ import { deleteCartItem, saveCartToServer, updateCartItemQuantity } from '../sto
 function Cart({ showModal, toggle}) {
     //const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
     const cartItems = useSelector(state => state.cart.cartItems)
+    console.log('Isi cart sekarang: ', cartItems)
     const dispatch = useDispatch()
 
-    const handleAddToCart = async () => {
-        const existingItem = cartItems.find((item) => item.id === product.id);
+    const handleAddToCart = (item) => {
+        const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
         if (existingItem) {
-            await dispatch(updateCartItemQuantity({ id: product.id, quantity: existingItem.quantity + 1 }));
+             dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity + 1 }));
         } else {
-            await dispatch(addToCart(product));
-            await dispatch(saveCartToServer(cartItems));
+             dispatch(addToCart(item));
+             dispatch(saveCartToServer([...cartItems, item]));
         }
     };
 
-    const handleRemoveFromCart = async (item) => {
+    const handleRemoveFromCart =  (item) => {
         const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
         if (existingItem.quantity === 1) {
-            await dispatch(deleteCartItem(item.id));
+             dispatch(deleteCartItem(item.id));
         } else {
-            await dispatch(removeFromCart(item));
-            await dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity - 1 }));
+             dispatch(removeFromCart(item));
+             dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity - 1 }));
         }
     };
 
     const handleClearCart = () => {
+        for (const item of cartItems) {
+            dispatch(deleteCartItem(item.id));
+        }
         dispatch(clearCart());
     };
 
