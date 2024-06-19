@@ -11,10 +11,11 @@ const Products = (props) => {
     const {id, img, name, series, price, onClick} = props
     //const {cartItems, addToCart} = useContext(CartContext)
     const [showModal, setShowModal] = useState(false)
-
+    const userId = useSelector(state => state.auth.user.id)
     const handleAddToCart = (product) => {
         dispatch(addToCart({...product}))
-        dispatch(saveCartToServer({...product}))
+        dispatch(saveCartToServer({ cartItems: {...product, quantity: 1} , userId }))
+        console.log('data yang di save: ', product)
     }
 
     const toggle = () => {
@@ -28,7 +29,7 @@ const Products = (props) => {
                 <p className='font-light text-[1.1em] mb-[0.5em]'>{series}</p>
                 <p className='text-bold text-[1em] mb-[0.5em]'>$ {price}</p>
                 <button className='flex justify-center items-center w-1/2 px-[10px] py-[10px] mx-auto border-2 border-[#c16e70] rounded hover:cursor-pointer bg-[#dc9e82] shadow-md active:opacity-75 transition-opacity duration-100'
-                onClick={() => handleAddToCart({id, img, name, series, price})}>
+                onClick={() => handleAddToCart({props})}>
                     Add to Cart <FaShoppingCart />
                 </button>
             </div>

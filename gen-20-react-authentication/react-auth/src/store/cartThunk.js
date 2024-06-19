@@ -45,7 +45,7 @@ export const fetchCartFromServer = createAsyncThunk(
     'cart/fetchCartFromServer',
     async (userId, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`http://localhost:3000/cart?userId=${userId}`);
+            const response = await axios.get(`http://localhost:3000/cart`);
             return Array.isArray(response.data) ? response.data : [];
         } catch (error) {
             return rejectWithValue(error.response.data);

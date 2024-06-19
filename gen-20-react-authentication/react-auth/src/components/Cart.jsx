@@ -6,7 +6,6 @@ import { fetchCartFromServer, deleteCartItem, saveCartToServer, updateCartItemQu
 
 
 function Cart({ showModal, toggle, userId}) {
-    //const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
     const cartItems = useSelector(state => state.cart.cartItems)
     console.log('Isi cart sekarang: ', cartItems)
     const dispatch = useDispatch()
@@ -14,46 +13,45 @@ function Cart({ showModal, toggle, userId}) {
     useEffect(() => { //to fetching data
         if(showModal) {
             dispatch(fetchCartFromServer(userId));
-            console.log('isi cart yang di fetch: ', cartItems)
         }
     }, [showModal, dispatch, userId])
 
     const handleAddToCart = (item) => {
-        const existingItem = cartItems.find((cartItem) => cartItem.cartItems.id === item.cartItems.id);
+        const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
         if (existingItem) {
             dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity + 1, userId }));
-            dispatch(saveCartToServer(cartItems.map(cartItem =>
-                cartItem.id === item.id ? { ...cartItem, quantity: existingItem.quantity + 1, userId } : cartItem
-            )));
+            // dispatch(saveCartToServer(cartItems.map(cartItem =>
+            //     cartItem.id === item.id ? { ...cartItem, quantity: existingItem.quantity + 1, userId } : cartItem
+            // )));
         } else {
             const newItem = {...item, quantity: 1, userId}
             dispatch(addToCart(newItem));
-            dispatch(saveCartToServer([...cartItems, newItem]));
+            dispatch(saveCartToServer({ cartItems: [...cartItems, newItem], userId }));
         }
     };
 
     const handleRemoveFromCart =  (item) => {
-        const existingItem = cartItems.find((cartItem) => cartItem.cartItems.id === item.cartItems.id);
+        const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
         if (existingItem.quantity === 1) {
-             dispatch(deleteCartItem(item.id));
+            dispatch(deleteCartItem({ itemId: item.id, userId }));
         } else {
             dispatch(removeFromCart(item));
             dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity - 1, userId }));
-            dispatch(saveCartToServer(cartItems.map(cartItem =>
-                cartItem.id === item.id ? { ...cartItem, quantity: existingItem.quantity - 1, userId } : cartItem
-            )));
+            // dispatch(saveCartToServer(cartItems.map(cartItem =>
+            //     cartItem.id === item.id ? { ...cartItem, quantity: existingItem.quantity - 1, userId } : cartItem
+            // )));
         }
     };
 
     const handleClearCart = () => {
         for (const item of cartItems) {
-            dispatch(deleteCartItem(item.id));
+            dispatch(deleteCartItem({ itemId: item.id, userId }));
         }
         dispatch(clearCart());
     };
 
     const handleDeleteItem = (item) => {
-        dispatch(deleteCartItem(item.id))
+        dispatch(deleteCartItem({ itemId: item.id, userId }))
     }
 
     const getCartTotal = () => {
