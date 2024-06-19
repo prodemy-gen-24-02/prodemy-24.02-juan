@@ -1,33 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart,removeFromCart,clearCart } from '../store/cartSlice'
 import PropTypes from 'prop-types'
-import { deleteCartItem, saveCartToServer, updateCartItemQuantity } from '../store/cartThunk'
+import { fetchCartFromServer, deleteCartItem, saveCartToServer, updateCartItemQuantity } from '../store/cartThunk'
 
 
-function Cart({ showModal, toggle}) {
+function Cart({ showModal, toggle, userId}) {
     //const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
     const cartItems = useSelector(state => state.cart.cartItems)
     console.log('Isi cart sekarang: ', cartItems)
     const dispatch = useDispatch()
 
+    useEffect(() => { //to fetching data
+        if(showModal) {
+            dispatch(fetchCartFromServer(userId));
+            console.log('isi cart yang di fetch: ', cartItems)
+        }
+    }, [showModal, dispatch, userId])
+
     const handleAddToCart = (item) => {
-        const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+        const existingItem = cartItems.find((cartItem) => cartItem.cartItems.id === item.cartItems.id);
         if (existingItem) {
-             dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity + 1 }));
+            dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity + 1, userId }));
+            dispatch(saveCartToServer(cartItems.map(cartItem =>
+                cartItem.id === item.id ? { ...cartItem, quantity: existingItem.quantity + 1, userId } : cartItem
+            )));
         } else {
-             dispatch(addToCart(item));
-             dispatch(saveCartToServer([...cartItems, item]));
+            const newItem = {...item, quantity: 1, userId}
+            dispatch(addToCart(newItem));
+            dispatch(saveCartToServer([...cartItems, newItem]));
         }
     };
 
     const handleRemoveFromCart =  (item) => {
-        const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+        const existingItem = cartItems.find((cartItem) => cartItem.cartItems.id === item.cartItems.id);
         if (existingItem.quantity === 1) {
              dispatch(deleteCartItem(item.id));
         } else {
-             dispatch(removeFromCart(item));
-             dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity - 1 }));
+            dispatch(removeFromCart(item));
+            dispatch(updateCartItemQuantity({ id: item.id, quantity: existingItem.quantity - 1, userId }));
+            dispatch(saveCartToServer(cartItems.map(cartItem =>
+                cartItem.id === item.id ? { ...cartItem, quantity: existingItem.quantity - 1, userId } : cartItem
+            )));
         }
     };
 
@@ -53,7 +67,7 @@ function Cart({ showModal, toggle}) {
 
     return (
         showModal && (
-            <div className="flex-col flex items-center fixed inset-0 left-1/4 bg-white dark:bg-[#301014] gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm z-10">
+            <div className="flex-col flex items-center fixed inset-0 left-1/4 bg-white dark:bg-[#301014] gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm z-10 overflow-y-auto">
                 <h1 className="text-2xl font-bold">Cart</h1>
                 <div className="absolute right-16 top-10">
                     <button
@@ -124,7 +138,8 @@ function Cart({ showModal, toggle}) {
 
 Cart.propTypes = {
     showModal: PropTypes.bool,
-    toggle: PropTypes.func
+    toggle: PropTypes.func,
+    userId: PropTypes.number
 }
 
 export default Cart

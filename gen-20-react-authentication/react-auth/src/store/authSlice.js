@@ -8,18 +8,21 @@ const initialState = {
         email: "",
         name: "",
         role: "",
-    }
+    },
+    userId: "",
 }
 
 function getStoredAuthState() {
     const token = localStorage.getItem("token")
     const userString = localStorage.getItem("user")
 
-    if (token) {
+    if (token && userString) {
+        const user = JSON.parse(userString)
         axios.defaults.headers.common["Authorization"] = "Bearer " + token
         return {
             token,
-            user: JSON.parse(userString),
+            user: user,
+            userId: user.id,
         }
     }
     return { ...initialState }
@@ -39,6 +42,7 @@ const authSlice = createSlice({
             const {id, email, name, role } = action.payload;
 
             state.user = {id, email, name, role}
+            state.userId = id
             console.log('Saving user to localStorage', {id, email, name, role})
             localStorage.setItem('user', JSON.stringify({ id, email, name, role }));
         },

@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit'
-import { saveCartToServer, deleteCartItem, updateCartItemQuantity } from './cartThunk'
+import { saveCartToServer, deleteCartItem, updateCartItemQuantity, fetchCartFromServer } from './cartThunk'
 
 const initialState = {
-    cartItems: [],
+    cartItems:[],
     status: 'idle',
     error: null,
 }
@@ -40,7 +40,7 @@ const cartSlice = createSlice({
             })
             .addCase(saveCartToServer.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.cartItems = action.payload.cartItems;
+                state.cartItems = Array.isArray(action.payload.cartItems) ? action.payload.cartItems : []
             })
             .addCase(saveCartToServer.rejected, (state, action) => {
                 state.status = 'failed';
@@ -52,8 +52,13 @@ const cartSlice = createSlice({
             .addCase(updateCartItemQuantity.fulfilled, (state, action) => {
                 state.cartItems = state.cartItems.map((item) =>
                     item.id === action.payload.id ? { ...item, quantity: action.payload.quantity } : item
-                );
-            });
+                )
+            })
+            .addCase(fetchCartFromServer.fulfilled, (state, action) => {
+                state.cartItems = Array.isArray(action.payload) ? action.payload.map(item => ({
+                    ...item.cartItems, quantity: item.quantity || 1, id: item.id
+                })) : [];
+            })
     },
 })
 

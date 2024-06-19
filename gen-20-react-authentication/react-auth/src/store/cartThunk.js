@@ -3,9 +3,13 @@ import axios from 'axios'
 
 export const saveCartToServer = createAsyncThunk(
     'cart/saveCartToServer',
-    async (cartItems, { rejectWithValue }) => {
+    async ({cartItems, userId}, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:3000/cart', {cartItems})
+            const response = await axios.post('http://localhost:3000/cart', {
+                ...cartItems,
+                userId,
+                quantity: cartItems.quantity || 1
+            })
             return response.data
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -15,9 +19,9 @@ export const saveCartToServer = createAsyncThunk(
 
 export const deleteCartItem = createAsyncThunk(
     'cart/deleteCartItem',
-    async (itemId, {rejectWithValue}) => {
+    async ({itemId, userId}, {rejectWithValue}) => {
         try {
-            await axios.delete(`http://localhost:3000/cart/${itemId}`)
+            await axios.delete(`http://localhost:3000/cart/${itemId}?userId=${userId}`)
             return itemId
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -27,12 +31,24 @@ export const deleteCartItem = createAsyncThunk(
 
 export const updateCartItemQuantity = createAsyncThunk(
     'cart/updateCartItemQuantity',
-    async ({id, quantity}, {rejectWithValue}) => {
+    async ({id, quantity, userId}, {rejectWithValue}) => {
         try {
-            const response = await axios.patch(`http://localhost:3000/cart/${id}`, {quantity})
+            const response = await axios.patch(`http://localhost:3000/cart/${id}`, {quantity, userId})
             return response.data
         } catch (error) {
             return rejectWithValue(error.response.data)
+        }
+    }
+)
+
+export const fetchCartFromServer = createAsyncThunk(
+    'cart/fetchCartFromServer',
+    async (userId, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/cart?userId=${userId}`);
+            return Array.isArray(response.data) ? response.data : [];
+        } catch (error) {
+            return rejectWithValue(error.response.data);
         }
     }
 )

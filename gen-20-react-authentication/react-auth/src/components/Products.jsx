@@ -28,7 +28,7 @@ const Products = (props) => {
                 <p className='font-light text-[1.1em] mb-[0.5em]'>{series}</p>
                 <p className='text-bold text-[1em] mb-[0.5em]'>$ {price}</p>
                 <button className='flex justify-center items-center w-1/2 px-[10px] py-[10px] mx-auto border-2 border-[#c16e70] rounded hover:cursor-pointer bg-[#dc9e82] shadow-md active:opacity-75 transition-opacity duration-100'
-                onClick={() => handleAddToCart(props)}>
+                onClick={() => handleAddToCart({id, img, name, series, price})}>
                     Add to Cart <FaShoppingCart />
                 </button>
             </div>

@@ -6,6 +6,13 @@
       "name": "admin2",
       "role": "admin",
       "id": 1
+    },
+    {
+      "email": "user1@mail.com",
+      "password": "$2a$10$wUHaTAXLI/5eMbKwvS9WreoTPoEtx4WO/SvEmIX0wqTClCR3eq/tm",
+      "name": "user1",
+      "role": "user",
+      "id": 2
     }
   ],
   "data": [
@@ -3685,6 +3692,60 @@
         "name": "Ancient Gear Advance"
       },
       "id": 5
+    },
+    {
+      "cartItems": {
+        "id": "64603182",
+        "img": "https://images.ygoprodeck.com/images/cards/64603182.jpg",
+        "price": "0.29",
+        "name": "Ancient Gear Dark Golem"
+      },
+      "id": 6
+    },
+    {
+      "cartItems": {
+        "id": "4064925",
+        "img": "https://images.ygoprodeck.com/images/cards/4064925.jpg",
+        "price": "0.15",
+        "name": "Ancient Gear Advance"
+      },
+      "id": 7
+    },
+    {
+      "cartItems": {
+        "id": "4064925",
+        "img": "https://images.ygoprodeck.com/images/cards/4064925.jpg",
+        "price": "0.15",
+        "name": "Ancient Gear Advance"
+      },
+      "id": 8
+    },
+    {
+      "cartItems": {
+        "id": "4064925",
+        "img": "https://images.ygoprodeck.com/images/cards/4064925.jpg",
+        "price": "0.15",
+        "name": "Ancient Gear Advance"
+      },
+      "id": 9
+    },
+    {
+      "cartItems": {
+        "id": "90276649",
+        "img": "https://images.ygoprodeck.com/images/cards/90276649.jpg",
+        "price": "0.11",
+        "name": "Couplet the Melodious Songstress"
+      },
+      "id": 10
+    },
+    {
+      "cartItems": {
+        "id": "44241999",
+        "img": "https://images.ygoprodeck.com/images/cards/44241999.jpg",
+        "price": "0.11",
+        "name": "Goblin Biker Troika Griare"
+      },
+      "id": 11
     }
   ]
 }
